@@ -2,7 +2,7 @@
 
 import apiClient from '@/libs/apiClient';
 import Post from './Post';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { PostType } from '@/types';
 
 const Timeline = () => {
@@ -22,6 +22,19 @@ const Timeline = () => {
       alert('Please login first')
     }
   }
+
+  useEffect(() => {
+    const fetchLatestPosts = async () => {
+      try {
+        const response = await apiClient.get('posts/get_latest_post')
+        setLatestPosts(response.data)
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchLatestPosts()
+  }, [])
 
   return (
     <div className="min-h-screen bg-gray-100">

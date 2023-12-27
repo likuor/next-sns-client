@@ -1,7 +1,6 @@
 import { PostProps, PostType } from '@/types';
 import Image from "next/image";
 
-
 const Post = (props: PostProps) => {
   const { post } = props
 
@@ -19,7 +18,7 @@ const Post = (props: PostProps) => {
           />
           <div>
             <h2 className="font-semibold text-md">{post.author?.username}</h2>
-            <p className="text-gray-500 text-sm">{post.createAt}</p>
+            <p className="text-gray-500 text-sm">{new Date(post.createdAt).toLocaleString()}</p>
           </div>
         </div>
         <p className="text-gray-700">{post.content}</p>
