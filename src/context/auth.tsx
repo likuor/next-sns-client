@@ -1,6 +1,7 @@
 'use client'
 
-import { createContext, useContext, ReactNode } from 'react';
+import apiClient from '@/libs/apiClient';
+import { createContext, useContext, ReactNode, useEffect } from 'react';
 
 interface AuthContextType {
   login: (token: string) => void;
@@ -21,6 +22,10 @@ export const useAuth = () => {
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
+  useEffect(() => {
+    const token = localStorage.getItem('auth_token')
+    apiClient.defaults.headers['Authorization'] = `Bearer ${token}`
+  }, [])
   const login = async (token: string) => {
     localStorage.setItem("auth_token", token)
   }
