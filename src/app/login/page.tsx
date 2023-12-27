@@ -1,4 +1,5 @@
 'use client'
+import { useAuth } from '@/context/auth';
 import apiClient from '@/libs/apiClient';
 import Head from 'next/head';
 import { useRouter } from 'next/navigation';
@@ -8,6 +9,7 @@ const Login = () => {
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
   const router = useRouter()
+  const { login } = useAuth()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -19,6 +21,7 @@ const Login = () => {
       });
 
       const token = response.data.token
+      login(token)
 
       router.push('/')
     } catch (error) {
