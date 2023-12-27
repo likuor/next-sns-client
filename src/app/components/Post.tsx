@@ -1,6 +1,10 @@
+import { PostProps, PostType } from '@/types';
 import Image from "next/image";
 
-const Post = () => {
+
+const Post = (props: PostProps) => {
+  const { post } = props
+
   return (
     <div className="bg-white shadow-md rounded p-4 mb-4">
       <div className="mb-4">
@@ -14,11 +18,11 @@ const Post = () => {
             layout="fixed"
           />
           <div>
-            <h2 className="font-semibold text-md">Koki</h2>
-            <p className="text-gray-500 text-sm">04/04 13:12</p>
+            <h2 className="font-semibold text-md">{post.author?.username}</h2>
+            <p className="text-gray-500 text-sm">{post.createAt}</p>
           </div>
         </div>
-        <p className="text-gray-700">First post</p>
+        <p className="text-gray-700">{post.content}</p>
       </div>
     </div>
   );
