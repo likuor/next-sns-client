@@ -1,12 +1,10 @@
 'use client'
 
-import { PostProps, PostType } from '@/types';
+import { PostProps } from '@/types';
 import Image from "next/image";
 
 const Post = (props: PostProps) => {
   const { post } = props
-
-  console.log(post.author.profile.profileImageUrl);
 
   return (
     <div className="bg-white shadow-md rounded p-4 mb-4">

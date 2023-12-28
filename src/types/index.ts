@@ -26,3 +26,9 @@ export interface PostType {
 export type PostProps = {
   post: PostType;
 };
+
+export type ProfileProps = {
+  params: {
+    id: string;
+  };
+};
