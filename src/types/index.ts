@@ -4,6 +4,15 @@ export interface UserType {
   email: string;
   password: string;
   posts: PostType[];
+  profile: ProfileType;
+}
+
+export interface ProfileType {
+  id: number;
+  bio: string;
+  profileImageUrl: string;
+  userId: number;
+  user: UserType[];
 }
 
 export interface PostType {
@@ -16,4 +25,10 @@ export interface PostType {
 
 export type PostProps = {
   post: PostType;
+};
+
+export type ProfileProps = {
+  params: {
+    id: string;
+  };
 };
