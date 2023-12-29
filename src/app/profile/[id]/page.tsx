@@ -3,7 +3,7 @@ import { ProfileProps, PostType } from '@/types';
 import Image from "next/image";
 
 // SSR
-export const getProfile = async (userId: string) => {
+const getProfile = async (userId: string) => {
   try {
     const profileResponse = await apiClient.get(`/users/profile/${userId}`);
     const postsResponse = await apiClient.get(`/posts/${userId}`);
