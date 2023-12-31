@@ -4,6 +4,7 @@ import Image from "next/image";
 
 // SSR
 const getProfile = async (userId: string) => {
+  'use server'
   try {
     apiClient.defaults.headers['Cache-Control'] = 'no-cache'
     const profileResponse = await apiClient.get(`/users/profile/${userId}`);
