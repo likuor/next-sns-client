@@ -14,7 +14,7 @@ const Navbar = () => {
         </h1>
         <nav>
           <ul className="flex space-x-4">
-            {user !== null ? (
+            {user ? (
               <>
                 <Link
                   href={`/profile/${user?.id}`}

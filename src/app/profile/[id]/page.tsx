@@ -4,9 +4,7 @@ import Image from "next/image";
 
 // SSR
 const getProfile = async (userId: string) => {
-  'use server'
   try {
-    apiClient.defaults.headers['Cache-Control'] = 'no-cache'
     const profileResponse = await apiClient.get(`/users/profile/${userId}`);
     const postsResponse = await apiClient.get(`/posts/${userId}`);
     return {
@@ -14,7 +12,6 @@ const getProfile = async (userId: string) => {
       posts: postsResponse.data
     };
   } catch (error) {
-    console.error(error);
     throw new Response('Not Found', { status: 404 });
   }
 }
